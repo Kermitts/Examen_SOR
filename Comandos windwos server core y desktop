@@ -1,0 +1,34 @@
+#Comandos windows server
+#Añadir ip estaticca
+  New-NetIPaddress -InterfaceIndex 12 -IPAddress 192.0.2.2 -PrefixLength 24 -DefaultGateway 192.0.2.1
+    InterfaceIndex es el valor de IfIndex del paso 2. (En nuestro ejemplo, 12)
+    IPAddress es la dirección IP estática que desea establecer. (En nuestro ejemplo, 191.0.2.2)
+    PrefixLength es la longitud del prefijo (otra forma de máscara de subred) para la dirección IP que está estableciendo. (En nuestro ejemplo, 24)
+    DefaultGateway es la dirección IP de la puerta de enlace predeterminada. (En nuestro ejemplo, 192.0.2.1)
+
+#Ejecute el siguiente cmdlet para establecer la dirección del servidor cliente DNS:
+  Set-DNSClientServerAddress –InterfaceIndex 12 -ServerAddresses 192.0.2.4
+
+#Unirse a un dominio existente
+  Ejecute Add-Computer. Se le pedirán ambas credenciales para unirse al dominio y al nombre de dominio.
+  Si necesita agregar una cuenta de usuario de dominio al grupo local Administradores, ejecute el siguiente comando en un símbolo del sistema (no en la ventana de PowerShell):
+  net localgroup administrators /add <DomainName>\<UserName>
+  
+#Cambiar nombre del servidor
+  Rename-Computer -ComputerName new_name>
+
+#Activar servidor
+  1-Ejectuar "slmgr.vbs –ipkproductkey>"
+  2-Escribir ",slmgr.vbs –ato"
+  Si se ha hecho bien no rebiria nungun mensaje
+
+#Link pagina: https://docs.microsoft.com/es-es/windows-server/administration/server-core/server-core-administer
+
+
+
+
+
+
+
+
+
